@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+/*
+  Design tokens — Centauri Digital Solutions
+  Source of truth: DESIGN_SYSTEM.md Sections 6-10.
+  Raw values live here as plain CSS variables (doc's literal names).
+  Tailwind utility generation is wired up in the @theme blocks below.
+*/
+:root {
+  /* Core surfaces (Section 6) */
+  --background: #F6F4F0;
+  --surface: #FFFFFF;
+  --surface-muted: #ECE7DF;
+  --surface-warm: #F1EADF;
+
+  /* Text (Section 6) */
+  --text-primary: #181614;
+  --text-secondary: #6E6861;
+  --text-muted: #9A9188;
+
+  /* Centauri accent (Section 6) */
+  --accent: #A95424;
+  --accent-soft: #C9783F;
+  --accent-faint: #F2DED2;
+  --accent-muted: #D9A07B;
+  --accent-dark: #6F2F16;
+  --accent-deep: #3F1A0C;
+
+  /* Graphite (Section 6) */
+  --graphite: #1C1A18;
+  --graphite-soft: #2A2623;
+  --graphite-muted: #3A342F;
+
+  /* Lines (Section 6) */
+  --line: #DDD7CF;
+  --line-strong: #CFC6BA;
+  --line-accent: rgba(169, 84, 36, 0.32);
+
+  /* Effects (Section 6) */
+  --accent-glow: rgba(169, 84, 36, 0.28);
+  --accent-glow-soft: rgba(169, 84, 36, 0.12);
+  --shadow-soft: rgba(24, 22, 20, 0.08);
+
+  /* Spacing (Section 8) — 4px/8px rhythm */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+  --space-8: 3rem;
+  --space-9: 4rem;
+  --space-10: 5rem;
+  --space-11: 6rem;
+  --space-12: 7.5rem;
+  --space-13: 10rem;
+  --space-14: 12rem;
+
+  /* Layout (Section 9) */
+  --container-max: 90rem;
+  --gutter-desktop: clamp(4rem, 6vw, 6rem);
+  --gutter-tablet: 2.5rem;
+  --gutter-mobile: 1.25rem;
+
+  /* Cut geometry (Section 10) — clip-path sizing, not a border-radius */
+  --cut-sm: 0.75rem;
+  --cut-md: 1.25rem;
+  --cut-lg: 2rem;
+}
+
+/*
+  Values that reference a runtime CSS variable (next/font className vars,
+  or raw tokens above) use `inline` so Tailwind keeps a live reference
+  instead of baking in a build-time literal.
+*/
+@theme inline {
+  /* Fonts — see app/fonts/index.ts (self-hosted Satoshi + Geist Mono) */
+  --font-sans: var(--font-satoshi);
+  --font-mono: var(--font-geist-mono);
+
+  /* Colors */
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-warm: var(--surface-warm);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-faint: var(--accent-faint);
+  --color-accent-muted: var(--accent-muted);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-deep: var(--accent-deep);
+
+  --color-graphite: var(--graphite);
+  --color-graphite-soft: var(--graphite-soft);
+  --color-graphite-muted: var(--graphite-muted);
+
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-line-accent: var(--line-accent);
+
+  --color-accent-glow: var(--accent-glow);
+  --color-accent-glow-soft: var(--accent-glow-soft);
+  --color-shadow-soft: var(--shadow-soft);
+
+  /* Spacing scale — replaces Tailwind's default multiplier scale so
+     p-1..p-14 / gap-1..gap-14 / etc. resolve to exact DESIGN_SYSTEM.md values */
+  --spacing-1: var(--space-1);
+  --spacing-2: var(--space-2);
+  --spacing-3: var(--space-3);
+  --spacing-4: var(--space-4);
+  --spacing-5: var(--space-5);
+  --spacing-6: var(--space-6);
+  --spacing-7: var(--space-7);
+  --spacing-8: var(--space-8);
+  --spacing-9: var(--space-9);
+  --spacing-10: var(--space-10);
+  --spacing-11: var(--space-11);
+  --spacing-12: var(--space-12);
+  --spacing-13: var(--space-13);
+  --spacing-14: var(--space-14);
+}
+
+/*
+  Static design values — Tailwind's own reserved namespaces
+  (--text-*, --radius-*, --shadow-*, --ease-*, --tracking-*, --leading-*)
+  match DESIGN_SYSTEM.md's literal token names directly.
+*/
+@theme {
+  /* Type scale (Section 7) */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: clamp(2.75rem, 5vw, 4.75rem);
+  --text-hero: clamp(3.25rem, 6vw, 5.75rem);
+
+  /* Line height (Section 7 typography rules: display ~0.95-1.02, body ~1.5-1.65)
+     Addition — see DESIGN_SYSTEM.md Notes: standalone leading tokens rather than
+     one paired value per size step, since the doc's rule is two categories
+     (display vs. body), not a per-step table. */
+  --leading-display: 1;
+  --leading-body: 1.6;
+
+  /* Letter spacing — addition, see DESIGN_SYSTEM.md Notes */
+  --tracking-display: -0.01em;
+  --tracking-technical: 0.08em;
+
+  /* Corner geometry (Section 10) */
+  --radius-control: 999px;
+  --radius-card-sm: 1rem;
+  --radius-card: 1.25rem;
+  --radius-card-lg: 1.5rem;
+  --radius-showcase: 2rem;
+
+  /* Shadows (Section 11) */
+  --shadow-card: 0 18px 50px rgba(24, 22, 20, 0.08);
+  --shadow-panel: 0 30px 90px rgba(24, 22, 20, 0.10);
+  --shadow-dark: 0 24px 70px rgba(0, 0, 0, 0.20);
+
+  /* Motion easing (Section 19) */
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-satoshi), system-ui, sans-serif;
+}
