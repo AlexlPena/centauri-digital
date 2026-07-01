@@ -208,6 +208,21 @@ Use fluid type with `clamp()` and preserve the hierarchy rather than fixed scree
 - Keep line lengths near 45 to 70 characters for body copy.
 - Do not center large bodies of text.
 
+### Tracking & Leading Tokens
+
+*Addition — implemented in milestone 1. The rules above set ranges rather than tokens; these are the concrete values in use, as two categories (display vs. body) rather than one value per type-scale step.*
+
+```css
+:root {
+  --tracking-display: -0.01em;
+  --tracking-technical: 0.08em;
+  --leading-display: 1;
+  --leading-body: 1.6;
+}
+```
+
+Use `--tracking-display`/`--leading-display` on display headings (hero, section headings). Use `--tracking-technical` on uppercase Geist Mono labels (eyebrows, metadata). Use `--leading-body` on body copy.
+
 ## 8. Spacing System
 
 The spacing system is based on a consistent 4px/8px rhythm. Use tokens instead of one-off values.
@@ -753,4 +768,20 @@ Before approving any new page or component, verify:
 - Orange-dominant sections
 - New visual identities introduced section by section
 - Static screenshots used as the production website
+
+## 29. Footer
+
+*Addition — implemented in milestone 2. The doc didn't originally specify a footer.*
+
+The footer sits on the light `background` surface, not graphite. Section 11 reserves graphite for "proof moments, selected work, process bands, and one capability anchor" — the footer isn't one of those moments, and stacking a dark footer directly under the already-graphite CTA band would merge them into one oversized dark block, against Section 4's Premium Restraint and Section 11's "do not default the entire site to dark mode." A `border-line` top border separates it from the CTA band instead.
+
+Contents:
+
+- Wordmark (small), with the same clipped-corner-motif copper star used in the header.
+- One-line descriptor (reuse the hero supporting copy tone, not a duplicate of the hero sentence itself).
+- Repeat of primary nav (Work, Approach, About).
+- A single "Start a conversation" text link (not a filled button — the footer should read quieter than the CTA band above it).
+- Copyright line: `© {year} Centauri Digital Solutions. All rights reserved.`
+
+Do not add legal/policy links (Privacy, Terms) until those pages actually exist — a footer link to a page that doesn't exist is worse than no link.
 

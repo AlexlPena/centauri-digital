@@ -72,7 +72,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 export default function TokenPreviewPage() {
   return (
-    <main className="bg-background min-h-full px-[var(--gutter-mobile)] md:px-[var(--gutter-tablet)] lg:px-[var(--gutter-desktop)] py-12">
+    <div className="bg-background min-h-full px-[var(--gutter-mobile)] md:px-[var(--gutter-tablet)] lg:px-[var(--gutter-desktop)] py-12">
       <div className="max-w-[var(--container-max)] mx-auto flex flex-col gap-13">
         <header className="flex flex-col gap-3">
           <p className="font-mono text-xs tracking-technical uppercase text-text-muted">
@@ -193,6 +193,6 @@ export default function TokenPreviewPage() {
           </p>
         </section>
       </div>
-    </main>
+    </div>
   );
 }
