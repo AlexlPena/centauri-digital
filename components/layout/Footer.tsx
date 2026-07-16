@@ -51,7 +51,7 @@ export function Footer() {
           </a>
         </div>
 
-        <p className="text-xs text-text-muted">
+        <p className="text-xs text-text-secondary">
           © {year} Centauri Digital Solutions. All rights reserved.
         </p>
       </Container>

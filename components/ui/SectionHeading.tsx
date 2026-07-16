@@ -4,6 +4,8 @@ import { Eyebrow } from "./Eyebrow";
 type SectionHeadingProps = {
   eyebrow?: string;
   as?: ElementType;
+  /** "inverse" for use on graphite/dark surfaces (e.g. the Process band). */
+  tone?: "default" | "inverse";
   className?: string;
   children: ReactNode;
 } & Omit<ComponentPropsWithoutRef<"div">, "className" | "children">;
@@ -16,14 +18,19 @@ type SectionHeadingProps = {
 export function SectionHeading({
   eyebrow,
   as: Heading = "h2",
+  tone = "default",
   className = "",
   children,
   ...rest
 }: SectionHeadingProps) {
   return (
     <div className={`flex flex-col gap-4 ${className}`} {...rest}>
-      {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
-      <Heading className="text-3xl md:text-4xl leading-display tracking-display text-text-primary">
+      {eyebrow ? <Eyebrow tone={tone}>{eyebrow}</Eyebrow> : null}
+      <Heading
+        className={`text-3xl md:text-4xl leading-display tracking-display ${
+          tone === "inverse" ? "text-surface" : "text-text-primary"
+        }`}
+      >
         {children}
       </Heading>
     </div>
